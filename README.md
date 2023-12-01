@@ -1,2 +1,3 @@
 # skillhub
-Skillhub is an online marketplace that connects skelled professionals with businnesses in need of their experience.
+Connecting People, Empowering Possibilities.
+Skillhub is an online marketplace that connects skilled professionals with businnesses in need of their experience.
