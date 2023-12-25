@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather App</title>
+</head>
+<body>
+	
+</body>
+</html>
+<h1>Weather App</h1>
+<form>
+	<label for="city">Enter City Name:</label>
+	<input type="text" id="city" name="city" required>
+	<button type="submit">Get Weather</button>
+</form>
+<script>
+	const form = document.querySelector('form');
+	form.addEventListener('submit', e => {
+		e.preventDefault();
+		const city = document.querySelector('#city').value;
+		const apiKey = 'YOUR_API_KEY_HERE';
+		const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+		fetch(apiUrl)
+			.then(response => response.json())
+			.then(data => {
+				const weather = data.weather[0].description;
+				const temperature = Math.round(data.main.temp - 273.15);
+				const location = data.name;
+				document.querySelector('#weather').innerHTML = `The current weather in ${location} is ${weather} with a temperature of ${temperature}°C.`;
+			})
+			.catch(error => {
+				console.error(error);
+				document.querySelector('#weather').innerHTML = 'An error occurred while fetching the weather data.';
+			});
+	});
+</script>
